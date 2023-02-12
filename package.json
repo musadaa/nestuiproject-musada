@@ -1,0 +1,12 @@
+{
+  "name": "nestuiproject-musada",
+  "version": "1.0.0",
+  "description": "UI Nest project",
+  "main": "index.js",
+  "repository": "https://github.com/musadaa/nestuiproject-musada",
+  "author": "musada",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^12.5.1"
+  }
+}
