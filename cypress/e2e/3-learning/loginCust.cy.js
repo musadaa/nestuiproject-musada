@@ -13,7 +13,12 @@ describe('Login Customer', function(){
     it('Invalid Login Customer', () => {
         cy.visit('https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login');
         cy.contains('Customer Login').click();
-        cy.get('[id = "userSelect"]');
-        cy.select('Malfoy Draco').should('not.exist');
+        cy.get('select option:contains(Draco Malfoy)').should('not.exist');
+    }),
+
+    it('No Choose  Customer', () => {
+        cy.visit('https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login');
+        cy.contains('Customer Login').click();
+        cy.contains('---Your Name---').should('exist');
     })
 })
