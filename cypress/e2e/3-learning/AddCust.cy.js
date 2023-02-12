@@ -32,6 +32,20 @@ describe('Add Customer', function(){
 
     }),
 
+
+    it('Empty First Name', () => {
+        cy.visit('https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login');
+        cy.contains('Bank Manager Login').click();
+        cy.get('[ng-class="btnClass1"]').click();
+        cy.get(':nth-child(2) > .form-control').type('Longi');
+        cy.get(':nth-child(3) > .form-control').type('E89068769');
+        cy.get('form').submit();
+        cy.get('input:invalid').should('have.length', 1)
+        cy.get('[placeholder = "First Name"]').then(($input) => {
+            expect($input[0].validationMessage).to.eq('Please fill out this field.')
+        })
+    }),
+
     it('Empty Last Name', () => {
         cy.visit('https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login');
         cy.contains('Bank Manager Login').click();
@@ -45,25 +59,12 @@ describe('Add Customer', function(){
         })
     }),
 
-    it('Empty First Name', () => {
-        cy.visit('https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login');
-        cy.contains('Bank Manager Login').click();
-        cy.get('[ng-class="btnClass1"]').click();
-        cy.get(':nth-child(1) > .form-control').type('Neville');
-        cy.get(':nth-child(3) > .form-control').type('E89068769');
-        cy.get('form').submit();
-        cy.get('input:invalid').should('have.length', 1)
-        cy.get('[placeholder = "First Name"]').then(($input) => {
-            expect($input[0].validationMessage).to.eq('Please fill out this field.')
-        })
-    }),
-
     it('Empty Post Code', () => {
         cy.visit('https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login');
         cy.contains('Bank Manager Login').click();
         cy.get('[ng-class="btnClass1"]').click();
         cy.get(':nth-child(1) > .form-control').type('Neville');
-        cy.get(':nth-child(3) > .form-control').type('E89068769');
+        cy.get(':nth-child(2) > .form-control').type('Longi');
         cy.get('form').submit();
         cy.get('input:invalid').should('have.length', 1)
         cy.get('[placeholder = "Post Code"]').then(($input) => {
